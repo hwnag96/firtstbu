@@ -36,7 +36,7 @@ var dbInfo = {
             console.log(error);
         }
         res.send(results);
-        console.log(results);
+        //console.log(results);
         
     });
     connection.end();    

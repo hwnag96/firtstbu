@@ -6,6 +6,7 @@ const express = require('express');
 const server  = express();
 
 const serverPort = 80;
+//port 자신거에 맞게 수정하기
 
 
 /************* Routing **************/
