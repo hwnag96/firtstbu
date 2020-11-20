@@ -1,3 +1,4 @@
+
 //엄격한 코드 검사
 'use strict';
 
@@ -97,3 +98,5 @@ api.get('/query_echo', (req, res, next) => {
 
 
 module.exports = api;
+
+/*fix fix*/

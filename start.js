@@ -5,8 +5,13 @@ const http    = require('http');
 const express = require('express');
 const server  = express();
 
+<<<<<<< HEAD
 const serverPort = 80;
 //port 자신거에 맞게 수정하기
+=======
+const serverPort = 1948;
+//1234
+>>>>>>> f968c59804416f6bccbf7afcaa03332807f46ce6
 
 
 /************* Routing **************/
