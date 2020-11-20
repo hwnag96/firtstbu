@@ -36,9 +36,10 @@ var dbInfo = {
         }
 
         console.log(results);
+        res.send(results);
     });
     connection.end();    
-    res.send("Welcome is API Fucntion");
+    
 });
 
 /************* Routing **************/
@@ -96,4 +97,3 @@ api.get('/query_echo', (req, res, next) => {
 
 
 module.exports = api;
-/*vgg*/
