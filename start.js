@@ -14,6 +14,7 @@ server.use('/',            require('./server'));
 server.use('/htyapi',         require('./htyapi'));
 server.use('/phjapi',         require('./phjapi'));
 server.use('/pskapi',         require('./pskapi'));
+server.use('/client',         require('./client'));
 
 /************* Running server **************/
 const httpServer = http.createServer(server);
