@@ -5,7 +5,8 @@
 var express = require('express');
 var mysql   = require('mysql');
 var api     = express();
-var db      = require('./db');
+//var db      = require('./db');
+
 
 var connection = mysql.createConnection({
     host     : 'ls-712a3de0f216372c332622b5ed5c6f22fe2f67bd.cu0xyssgzj43.ap-northeast-2.rds.amazonaws.com',
@@ -19,7 +20,7 @@ var connection = mysql.createConnection({
 api.get('/', (req, res, next) => {
 
 
-var dbInfo = {
+/*var dbInfo = {
 
     host: ' ls-712a3de0f216372c332622b5ed5c6f22fe2f67bd.cu0xyssgzj43.ap-northeast-2.rds.amazonaws.com',
     port: '3306',
@@ -28,7 +29,7 @@ var dbInfo = {
     database: 'BU',
     multipleStatements: true
 }
-
+*/
 
     connection.connect();
     db.query('SELECT * FROM sensor_data ', function (error, results, fields) {
@@ -68,16 +69,34 @@ api.post('/hello', (req, res, next) => {
     res.send("백석대학교 :"+ pId + "정보는? ");
 });
 
-api.post('/insSensor', (req, res, next) => {
+api.get('/insSensor', (req, res, next) => {
 
-    var sensorType = req.body.sensorType;// "";
-    var sensorValue = req.body.sensorValue;//"";
-    var userId = req.body.userId; //"";
+    var sensorType = req.query.sensorType;// "";
+    var sensorValue = req.query.sensorValue;//"";
+    var userId = req.query.userId; //"";
+
+    console.log(req.query.name);
+    let student = {
+        id : 0,
+        name : "test",
+        age : 5
+    }
     
+
+    if(req.query.id !== null && req.query.id !== undefined){
+        student.id = req.query.id;
+    }
+    if(req.query.name !== null && req.query.name !== undefined){
+        student.name = req.query.name;
+    }
+
+    if(req.query.age !== null && req.query.age !== undefined){
+        student.age = req.query.age;
+    }
+
     var sql = " insert into sensor_data (sensor_type, sensor_value, sensor_user, ins_date ) values ";
     sql += " ('"+ sensorType +"', "+ sensorValue +", '"+ userId +"', now()) ";
     console.log(sql);
-    connection.connect();
 
     console.log("init start");
     connection.query(sql , function(error, results, fields){
